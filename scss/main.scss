@@ -1,0 +1,178 @@
+@import "variables.scss";
+
+
+
+*  {
+  box-sizing: border-box ; 
+  padding: 0 ;
+  margin: 0 ;  
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  
+  display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+          "header"
+          "main"
+          "footer";
+}
+
+nav{
+  h1{
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .navbar-brand{
+    margin: 0px;
+    padding: 0px;
+
+      h1{
+        margin: $margin-nulo;
+        padding:$padding-nulo ;
+      }
+  }
+
+}
+
+/* ----- MAIN ------*/
+
+@mixin flex-row-center {
+  display: flex;
+  flex-direction: row;
+
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+main{
+  h1{
+    display: flex;
+  justify-content: map-get($map: encabezado, $centrar: );
+  text-align: map-get($map: encabezado, $centrar-texto: );
+  padding: map-get($map: encabezado, $padding: );
+}
+  }
+
+  .mainContent1{
+    img{
+      width: 100%;
+    }
+  }
+
+  .mainContent2{
+    display: flex;
+    
+  padding: $padding-peque;
+  
+  background-color:$yellow-custom;
+
+    article{
+      padding: $padding-peque;
+      font-weight: bolder;
+    }
+  }
+
+
+/* ----- FIN HOME ----- */
+
+
+/* ---- footer ----- */
+
+footer{
+  
+  ul{
+    list-style-type: none;
+
+    @include flex-row-center()
+
+    background-color: $grey-custom;
+    padding: $padding-muy-peque;
+    margin: $margin-nulo;
+  }
+
+      li{
+        @include flex-row-center()
+        padding: $padding-muy-peque;
+      }
+
+      p{
+        margin: $margin-nulo;
+        font-weight: bolder;
+        font-size: small;
+       color: black;
+      }
+
+      img{
+        height: 40px;
+        padding: $padding-muy-peque;
+
+        transition: 1s;
+
+        &:hover{
+          height: 60px;
+          width: auto;
+        }
+      }
+
+      .mailText{
+        font-size: 7.5px;
+      }
+    
+      .map{
+          @extend.ul.li.img    
+          height: 80px;
+          width: 80px;
+
+          padding: $padding-mediano;
+          margin: 1% ;
+
+          border-radius: 10px ;
+      }
+      /* La propiedad extened extendería la transición y modificaria dimensiones esteticas */
+     
+@media (min-width:768px){
+
+  ul{
+    @include flex-row-center()
+
+     li{
+      padding-left: $padding-muy-grande;
+      padding-right: $padding-grande;
+      }
+     
+     img{
+      height: 80px;
+      padding: $padding-grande; 
+
+      transition: 1s;
+
+      &hover{
+        height: 120px;
+        width: auto;
+      }
+     }
+     
+     .map{
+      @extend.ul.li.img
+      width: 80px;
+      padding: $padding-mediano;
+  
+      margin: 1% ;
+      border-radius: 10px ;
+     }
+  }
+  /* La propiedad extened extendería la transición y modificaria dimensiones esteticas */
+   
+ }
+}
+
+/*---- FIN FOOTER --- */
+
+
+
